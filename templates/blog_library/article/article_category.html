@@ -1,0 +1,150 @@
+{% extends 'navbar.html' %}
+{% load base_tage %}
+{% load ratings %}
+{% block main %}
+<!--body content wrap start-->
+    <title>{% block title %} (مقاله) | {{ category_article.title }}{% endblock %}</title>
+<div class="main">
+
+    <!--hero section start-->
+    <section class="hero-section ptb-100 gradient-overlay"
+             style="background: url('img/hero-bg-4.jpg')no-repeat center center / cover">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-9 col-lg-7">
+                    <div class="page-header-content text-white text-center pt-sm-5 pt-md-5 pt-lg-0">
+                        <h1 class="text-white mb-0">{{ category_article.title }}</h1>
+                        <div class="custom-breadcrumb">
+                            <ol class="breadcrumb d-inline-block bg-transparent list-inline py-0">
+                                <li class="list-inline-item breadcrumb-item"><a href="{% url 'digital_library:home' %}">خانه</a></li>
+                                <li class="list-inline-item breadcrumb-item"><a href="{% url 'digital_library:library' %}">مقاله</a></li>
+                                <li class="list-inline-item breadcrumb-item active">{{ category_article.title }}</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--hero section end-->
+
+    <!--blog section start-->
+    <div class="module ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="sidebar-left pr-4">
+
+                        <!-- Search widget-->
+                        <aside class="widget widget-search">
+                            <form method="GET" action="{% url 'digital_library:search_article' %}">
+                                <input name="q_article" class="form-control" type="search" placeholder="کلمات جستجو را تایپ کنید">
+                                <button class="search-button" type="submit"><span class="ti-search"></span></button>
+                            </form>
+                        </aside>
+
+
+                        <!-- Categories widget-->
+                        {% category_article %}
+
+                        <aside class="widget widget-recent-entries-custom">
+                        {% popular_library %}
+                        {% hot_library %}
+                        </aside>
+
+                        <!-- Subscribe widget-->
+                        <aside class="widget widget-categories">
+                            <div class="widget-title">
+                                <h6>خبرنامه</h6>
+                            </div>
+                            <p>آدرس ایمیل خود را در زیر وارد کنید تا در خبرنامه من عضو شوید</p>
+                            <form action="#" method="post"
+                                  class="d-none d-md-block d-lg-block">
+                                <input type="text" class="form-control input" id="email-footer" name="email"
+                                       placeholder="info@yourdomain.com">
+                                <button type="submit" class="btn solid-btn btn-block btn-not-rounded mt-3">اشتراک</button>
+                            </form>
+                        </aside>
+
+                        <!-- Tags widget-->
+                        <aside class="widget widget-tag-cloud">
+                            <div class="widget-title">
+                                <h6>برچسب ها</h6>
+                            </div>
+                            <div class="tag-cloud"><a href="#">تجارت الکترونیک</a><a href="#">نمونه کارها</a><a href="#">پاسخگو</a><a href="#">بوت استرپ</a><a href="#">کسب و کار</a><a href="#">شرکت های بزرگ</a></div>
+                        </aside>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8">
+
+                    <!-- Post-->
+                {% if object_list %}
+                    {% for article in object_list %}
+                        <article class="post">
+                        <div class="post-preview"><img style="width:80%;height: 40%" src="{{ article.thumbnail.url }}" alt="blog"/></div>
+                        <div class="post-wrapper">
+                            <div class="post-header">
+                                <h2 class="post-title"><a href="{% url 'digital_library:detail_article' article.slug%}">{{ article.title }} </a></h2>
+                                {% ratings article %}
+                                <ul class="post-meta">
+                                    <li>{{ article.jpublish }}</li>
+                                    <li><a href="#">نویسنده</a>: <a href="#">
+                                        {% if article.author.get_full_name %}
+                                            {{ article.author.get_full_name }}
+                                        {% else %}
+                                            {{ article.author }}
+                                        {% endif %}
+                                    </a></li>
+                                </ul>
+                            </div>
+                            <div class="post-content">
+                                {{ article.descriptions |truncatechars:450|safe|striptags}}
+                            </div>
+                            <div class="post-more pt-4 align-items-center d-flex"><a href="{% url 'digital_library:detail_article' article.slug%}" class="btn solid-btn">ادامه مطلب <span class="ti-arrow-right"></span></a></div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                    <div><p>محتوای وجود ندارد.</p></div>
+                    {% else %}
+                {% endif %}
+                    <!-- Post end-->
+                    <!-- Page Navigation-->
+                {% if is_paginated %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <nav class="custom-pagination-nav">
+                                <ul class="pagination justify-content-center">
+                                {% if page_obj.has_previous %}
+                                <li class="page-item" ><a class="page-link" href="?page={{ page_obj.previous_page_number }}"><span class="ti-angle-left"></span></a></li>
+                                {% else %}
+                                <li class="disabled"><span class="ti-angle-left" ></span></li>
+                                {% endif %}
+                                {% for i in paginator.page_range %}
+                                    {% if page_obj.number == i %}
+                                        <li class="page-item active"><span class="active_page page-link" >{{ i }} </span></li>
+                                    {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                            {% if page_obj.has_next %}
+                                <li class="page-item" ><a class="page-link" href="?page={{ page_obj.next_page_number }}"><span class="ti-angle-right"></span></a></li>
+                                {% else %}
+                                <li class="disabled"><span class="ti-angle-right" ></span></li>
+                                {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                {% endif %}
+                    <!-- Page Navigation end-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--blog section end-->
+
+</div>
+<!--body content wrap end-->
+
+{% endblock %}

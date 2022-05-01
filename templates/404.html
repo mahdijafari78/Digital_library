@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block error %}
+<!--loader start-->
+
+<!--body content wrap start-->
+<div class="main">
+
+    <!--hero section start-->
+    <section class="hero-section ptb-100 gradient-overlay full-screen"
+             style="background: url('img/hero-bg-4.jpg')no-repeat center center / cover">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-9 col-lg-7">
+                    <div class="error-content text-center text-white">
+                        <div class="notfound-404"><h1 class="text-white">404</h1></div>
+                        <h3 class="text-white">با عرض پوزش، چیزی اشتباه است</h3>
+                        <p>ممکن است صفحه مورد نظر حذف شده باشد یا نام آن تغییر کرده یا موقتاً در دسترس نباشد.</p><a class="btn outline-white-btn" href="{% url 'digital_library:home' %}">به صفحه اصلی بروید</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--hero section end-->
+
+</div>
+<!--body content wrap end-->
+{% endblock %}

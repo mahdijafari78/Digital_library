@@ -1,0 +1,112 @@
+{% extends 'registration/base.html' %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block title %}{% block title-meta %}
+    لیست کتاب خانه 
+{% endblock %}{% endblock %}
+{% block main %}
+        <div style="margin-bottom: 2%">
+        <form  class="form-inline" action="{% url 'panel:search-library' %}" method="GET" >
+            <input name="q" class="col col-3" style=" border-radius: 10px"  placeholder="جستجو" type="text">
+            <button style="margin-right:10px " class="btn btn-primary" type="submit" >جستجو</button>
+        </form>
+    </div>
+    {% if object_list  %}
+        <div class="row">
+          <div class="col-12">
+
+              <div class="card">
+              <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>عنوان کتاب </th>
+                          <th> تصویر کتاب</th>
+                          <th>دسته کتاب</th>
+                          <th>نویسنده</th>
+                          <th>خلاصه کتاب</th>
+                          <th>زمان انتشار</th>
+                          <th> کتاب ویژه</th>
+                          <th>وضعیت</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          {% for object in object_list %}
+                              <tr>
+                                <td>
+                                    {% if object.status in 'bd'|make_list or user.is_superuser%}
+                                        <a href="#">{{ object.title }}</a>
+                                    {% else %}
+                                        {{ object.title }}
+                                    {% endif %}
+                                </td>
+                                <td><img src="{{ object.thumbnail.url }}" width="80" height="50"></td>
+                                <td>{{ object.category_library }}</td>
+                                <td>{{ object.author.get_full_name }}</td>
+                                <td>{{ object.descriptions|striptags|truncatewords:20 }}</td>
+                                <td>{{ object.jpublish }}</td>
+                                <td>
+                                    {%  if object.is_special %}
+                                       <i class="fa fa-check-circle" style="color: green"></i>
+                                    {% else %}
+                                        <i class="fa fa-minus-circle" style="color: red"></i>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                   {% if object.status == 'p' %}
+                                       <span class="badge badge-success">منتشر شده</span>
+                                       <a class="badge badge-primary" target="_blank" href="{% url 'digital_library:detail_library' object.slug%}">نمایش در سایت</a>
+                                    {% elif object.status == 'i' %}
+                                       <span class="badge" style="background-color: #b9bdbd;">در حال بررسی</span>
+                                       {%if user.is_superuser %}
+                                           <a target="_blank" class="badge badge-secondary" href="{% url 'digital_library:preview_library' object.slug%}"> پیش نمایش </a>
+                                        {% endif %}
+                                   {% else %}
+                                       {% if object.status == 'd' %}
+                                       <span class="badge badge-danger"> پیش نویس</span>
+                                       {% else %}
+                                           <span class="badge badge-warning"> برگشت داده شده</span>
+                                       {% endif %}
+                                       <a target="_blank"  class="badge badge-secondary" href="{% url 'digital_library:preview_library' object.slug%}"> پیش نمایش </a>
+                                   {% endif %}
+                                    {% if user.is_superuser %}
+                                        <a class="badge text-danger" href="{% url 'panel:library-delete' object.pk %}"> حذف </a>
+                                    {% endif %}
+                                </td>
+                              </tr>
+                          {% endfor %}
+                      </tbody>
+                    </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            {% else %}
+                <h3>محتوایی برای نمایش وجود ندارد .</h3>
+            {% endif %}
+            <!-- /.card -->
+              <div style="margin-right: 40%;  padding: 2%;">
+                  {% if is_paginated %}
+                      <div class="row" >
+                          <div class="col-md-12">
+                              <div>
+                                  {% if page_obj.has_previous %}
+                                      <a class="btn btn-secondary" href="{% url 'panel:search' %}?page={{ page_obj.previous_page_number }}">بعدی<span
+                                              class="pg-arrow_left"></span></a>
+                                  {% endif %}
+
+                                  <span class="small">صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}</span>
+
+                                  {% if page_obj.has_next %}
+                                      <a class="btn btn-secondary" href="{% url 'panel:search' %}?page={{ page_obj.next_page_number }}">قبلی<span
+                                              class="pg-arrow_right"></span></a>
+                                  {% endif %}
+                                  </div>
+                          </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                <!-- page  -->
+          </div>
+        </div>
+{% endblock %}

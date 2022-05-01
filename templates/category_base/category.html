@@ -1,0 +1,34 @@
+{% load static %}
+
+<li class="dropdown"><a href="{% url 'digital_library:library' %}" class="dropdown-toggle">کتاب خانه</a>
+
+
+    <ul class="sub-menu">
+        {% for cate_library in library %}
+            {% if cate_library.parent == None %}
+                <li><a href="{% url 'digital_library:category_library' cate_library.slug%}">{{ cate_library.title }}</a>
+                    {% if cate_library.children.active %}
+                        {% include 'category_base/category_loop_library.html' %}
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</li>
+
+<li class="dropdown"><a href="{% url 'digital_library:article' %}" class="dropdown-toggle">مقاله</a>
+    <ul class="sub-menu">
+        {% for cate_article in article %}
+            {% if cate_article.parent == None %}
+                <li><a href="{% url 'digital_library:category_article'  cate_article.slug%}">{{ cate_article.title }}</a>
+                    {% if cate_article.children.active %}
+                        {% include 'category_base/category_loop_article.html' %}
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</li>
+
+
+

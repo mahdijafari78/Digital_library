@@ -1,0 +1,12 @@
+<aside class="widget widget-categories">
+    <div class="widget-title">
+        <h6>دسته بندی ها</h6>
+    </div>
+    <ul>
+        {% for cate_article in article %}
+            {% if cate_article.parent == None %}
+                <li><a href="{% url 'digital_library:category_article' cate_article.slug%}">{{ cate_article.title }}<span class="float-right">{{ cate_article.count }}</span></a></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</aside>

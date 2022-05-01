@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load base_tage %}
+
+<!--loader start-->
+{% block base %}
+<div id="preloader">
+    <div class="loader1">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!--loader end-->
+
+<!--header section start-->
+<header class="header">
+
+    <!--start navbar-->
+<nav class="navbar navbar-expand-lg fixed-top bg-transparent ">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'digital_library:home' %}">
+                <img src="{% static 'library/img/logo.png' %}" width="160" alt="logo" class="img-fluid"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="ti-menu"></span>
+            </button>
+            <div class="collapse navbar-collapse h-auto" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto menu">
+                    <li class="dropdown"><a href="{% url 'digital_library:home' %}" > خانه</a>
+                        {% category_navbar %}
+                        <li><a href="#faq" class="page-scroll">سؤالات متداول</a></li>
+                        <li><a href="#contact" class="page-scroll">تماس با ما</a></li>
+                        <li class="dropdown"><a href="{% url 'panel:profile' %}">پرفایل</a></li>
+                        <li class="dropdown"><a href="{% url 'login' %}" > ورود/ ثبت نام</a></li>
+                 </ul>
+            </div>
+        </div>
+</nav>
+
+</header>
+<!--header section end-->
+{% block main %}
+
+{% endblock %}
+
+
+
+<!--footer section start-->
+<footer class="footer-section">
+    <!--footer top start-->
+    <div class="footer-top gradient-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-12">
+                    <div class="footer-nav-wrap text-white mb-0 mb-md-4 mb-lg-0">
+                       <p>این سایت برای دسترسی داشتن به کتاب ها و مقالات می باشد و مجموعه از کتاب و مقالات در این سایت وجو دارد</p>
+                        <ul class="list-unstyled social-list mb-0">
+                            <li class="list-inline-item"><a href="#" class="rounded"><span class="ti-facebook white-bg color-2 shadow rounded-circle"></span></a></li>
+                            <li class="list-inline-item"><a href="#" class="rounded"><span class="ti-twitter white-bg color-2 shadow rounded-circle"></span></a></li>
+                            <li class="list-inline-item"><a href="#" class="rounded"><span class="ti-linkedin white-bg color-2 shadow rounded-circle"></span></a></li>
+                            <li class="list-inline-item"><a href="#" class="rounded"><span class="ti-dribbble white-bg color-2 shadow rounded-circle"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-12">
+                    <div class="footer-nav-wrap text-white">
+                        <h5 class="text-white">لینک های مفید</h5>
+                        <ul class="list-unstyled footer-nav-list mt-3">
+                            <li><a href="#" class="text-foot"><span class="ti-angle-double-right"></span> محافظت از حریم خصوصی</a></li>
+                            <li><a href="#" class="text-foot"><span class="ti-angle-double-right"></span> پرداخت های ایمن</a></li>
+                            <li><a href="#" class="text-foot"><span class="ti-angle-double-right"></span> شرایط خدمات</a></li>
+                            <li><a href="#" class="text-foot"><span class="ti-angle-double-right"></span> مستندات</a></li>
+                            <li><a href="#" class="text-foot"><span class="ti-angle-double-right"></span> سیاست حفظ حریم خصوصی</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-4 col-12">
+                    <div class="footer-nav-wrap text-white">
+                        <h5 class="text-white">شرکت</h5>
+                        <ul class="list-unstyled footer-nav-list mt-3">
+                            <li><a href="#" class="text-foot"><span class="ti-angle-double-right"></span> بخش درباره ما</a></li>
+                            <li><a href="#" class="text-foot"><span class="ti-angle-double-right"></span> بخش قیمت گذاری</a></li>
+                            <li><a href="#" class="text-foot"><span class="ti-angle-double-right"></span> بخش ویژگی ها</a></li>
+                            <li><a href="#" class="text-foot"><span class="ti-angle-double-right"></span> بخش سوالات متداول</a></li>
+                            <li><a href="#" class="text-foot"><span class="ti-angle-double-right"></span> بخش تماس با ما</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="footer-nav-wrap text-white">
+                        <h5 class="text-light footer-head">خبرنامه</h5>
+                        <p>برای دریافت به روزرسانی در خبرنامه ما مشترک شوید. ما ایمیل را برای شما ارسال نمی کنیم.</p>
+                        <form action="#" class="newsletter-form mt-3">
+                            <div class="input-group">
+                                <input type="email" class="form-control" id="email" placeholder="ایمیل خود را وارد کنید" required="">
+                                <div class="input-group-append">
+                                    <button class="btn solid-btn subscribe-btn btn-hover" type="submit">
+                                        اشتراک
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer top end-->
+</footer>
+<!--footer section end-->
+
+
+<!--bottom to top button start-->
+<button class="scroll-top scroll-to-target" data-target="html">
+    <span class="ti-angle-up"></span>
+</button>
+<!--bottom to top button end-->
+{% endblock %}

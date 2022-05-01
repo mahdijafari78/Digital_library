@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block base %}
+<title>{% block title %}|ایجاد حساب{% endblock %}</title>
+
+<!--body content wrap start-->
+<body>
+
+
+<!--loader start-->
+<div id="preloader">
+    <div class="loader1">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!--loader end-->
+
+<!--body content wrap start-->
+<div class="main">
+
+    <!--hero section start-->
+    <section class="hero-section full-screen gray-light-bg">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-center">
+
+                <div class="col-12 col-md-7 col-lg-6 col-xl-8 d-none d-lg-block">
+
+                    <!-- Image -->
+                    <div class="bg-cover vh-100 ml-n3 gradient-overlay" style="background-image: url(img/hero-bg-2.jpg);">
+                        <div class="position-absolute login-signup-content">
+                            <div class="position-relative text-white col-md-12 col-lg-7">
+                                <h2 class="text-white">حساب کاربری برای خود بسازید</h2>
+                                <p class="lead">صورت خود را همیشه به سمت آفتاب نگه دارید - و سایه ها در پشت شما قرار می گیرند. به طور مداوم سکوهای کاملاً تحقیق شده را دنبال کنید در حالی که سیستم عامل های به موقع. کاتالیزورهای بهینه موازی کار بهینه برای تغییر بعد از کاتالیزورهای متمرکز برای تغییر.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-5 col-lg-6 col-xl-4 px-lg-6">
+                    <div class="text-center" style="color: rgba(203,28,21,0.89)">
+                        {% if form.non_field_errors %}
+                            {% for errors in form.non_field_errors %}
+                                <span>{{ errors }}</span>
+                            {% endfor %}
+                        {% endif %}
+                   </div>
+                    <div class="login-signup-wrap px-4 px-lg-5 my-5">
+                        <!-- Heading -->
+                        <h1 class="text-center mb-1">
+                           ثبت نام
+                        </h1>
+
+                        <!-- Subheading -->
+
+                        <!-- Form -->
+                        <form class="login-signup-form" method="post">{% csrf_token %}
+                            <div class="form-group">
+                                <!-- Label -->
+                                <label class="pb-1">
+                                 نام کاربری
+                                </label>
+                                <!-- Input group -->
+                                <div class="input-group input-group-merge">
+                                    <div class="input-icon">
+                                        <span class="ti-user color-primary"></span>
+                                    </div>
+                                    {{ form.username|add_class:"form-control" }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Label -->
+                                <label class="pb-1">
+                                    آدرس ایمیل
+                                </label>
+                                <!-- Input group -->
+                                <div class="input-group input-group-merge">
+                                    <div class="input-icon">
+                                        <span class="ti-email color-primary"></span>
+                                    </div>
+                                    {{ form.email |add_class:"form-control" }}
+                                </div>
+                            </div>
+                            <!-- Password -->
+                            <div class="form-group">
+                                <!-- Label -->
+                                <label class="pb-1">
+                                   کلمه عبور
+                                </label>
+                                <!-- Input group -->
+                                <div class="input-group input-group-merge">
+                                    <div class="input-icon">
+                                        <span class="ti-lock color-primary"></span>
+                                    </div>
+                                    {{ form.password1|add_class:"form-control" }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <!-- Label -->
+                                <label class="pb-1">
+                                   تایید کلمه عبور
+                                </label>
+                                <!-- Input group -->
+                                <div class="input-group input-group-merge">
+                                    <div class="input-icon">
+                                        <span class="ti-lock color-primary"></span>
+                                    </div>
+                                    {{ form.password2|add_class:"form-control" }}
+                                    {% if form.password2.errors %}
+                                        <div>
+                                            {{ form.password1.errors }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <!-- Submit -->
+                            <button class="btn btn-block solid-btn border-radius mt-4 mb-3">
+                               ثبت نام
+                            </button>
+
+                            <!-- Link -->
+                            <div class="text-center">
+                                <small class="text-muted text-center">
+                                   قبلاً حساب دارید؟ <a href="{% url 'login' %}">ورود به سیستم</a>.
+                                </small>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+        </div>
+    </section>
+    <!--hero section end-->
+
+</div>
+{% endblock %}

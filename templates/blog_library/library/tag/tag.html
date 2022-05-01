@@ -1,0 +1,12 @@
+
+    <div class="widget-title">
+        <h6>{{ title }}</h6>
+    </div>
+    <ul>
+        {% for i in library %}
+        <li class="clearfix">
+            <div class="wi"><a href="#"><img src="{{ i.thumbnail.url }}" alt="recent post" class="img-fluid rounded"/></a></div>
+            <div class="wb"><a href="{% url 'digital_library:detail_library' i.slug %}"></a>{{ i.title }}</div>
+        </li>
+        {% endfor %}
+    </ul>

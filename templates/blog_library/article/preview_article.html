@@ -1,0 +1,203 @@
+{% extends 'navbar.html' %}
+<!--body content wrap start-->
+{% block main %}
+        <title>{% block title %}| {{ object.title }}{% endblock %}</title>
+<div class="main">
+
+    <!--hero section start-->
+    <section class="hero-section ptb-100 gradient-overlay"
+             style="background: url('img/hero-bg-4.jpg')no-repeat center center / cover">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-9 col-lg-7">
+                    <div class="page-header-content text-white text-center pt-sm-5 pt-md-5 pt-lg-0">
+                        <h1 class="text-white mb-0">وبلاگ نوار کناری چپ</h1>
+                        <div class="custom-breadcrumb">
+                            <ol class="breadcrumb d-inline-block bg-transparent list-inline py-0">
+                                <li class="list-inline-item breadcrumb-item"><a href="#">خانه</a></li>
+                                <li class="list-inline-item breadcrumb-item"><a href="#">وبلاگ</a></li>
+                                <li class="list-inline-item breadcrumb-item active">جزییات وبلاگ نوار کناری چپ</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--hero section end-->
+
+    <!--blog section start-->
+    <div class="module ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8">
+                    <!-- Post-->
+                    <article class="post">
+                        <div class="post-preview"><img style="width:80%;height: 40%" src="{{ object.thumbnail.url }}" alt="article" class="img-fluid"/></div>
+                        <div class="post-wrapper">
+                            <div class="post-header">
+                                <h1 class="post-title">{{ object.title }}</h1>
+                                <ul class="post-meta">
+                                    <li>{{ object.jpublish }}</li>
+                                    <li><a href="#">نویسنده</a>: <a href="#">
+                                        {% if article.author.get_full_name %}
+                                            {{ article.author.get_full_name }}
+                                        {% else %}
+                                            {{ article.author }}
+                                        {% endif %}
+                                    </a></li>
+                                </ul>
+                            </div>
+                            <div class="post-content">
+                                {{ object.descriptions | safe }}
+                            </div>
+                            <div class="post-footer">
+                                <div class="post-tags"><a href="#"></a>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Post end-->
+
+                    <!-- Comments area-->
+                    <div class="comments-area mb-5">
+                        <h5 class="comments-title">3 نظر</h5>
+                        <div class="comment-list">
+                            <!-- Comment-->
+                            <div class="comment">
+                                <div class="comment-author"><img class="avatar img-fluid rounded-circle" src="img/client-2.jpg" alt="comment"/></div>
+                                <div class="comment-body">
+                                    <div class="comment-meta">
+                                        <div class="comment-meta-author"><a href="#">محمد خادملو</a></div>
+                                        <div class="comment-meta-date"><a href="#">5 مرداد ، 1399 در 5:45 ق.ظ</a></div>
+                                    </div>
+                                    <div class="comment-content">
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</p>
+                                    </div>
+                                    <div class="comment-reply"><a href="#">پاسخ</a></div>
+                                </div>
+                                <!-- Subcomment-->
+                                <div class="children">
+                                    <div class="comment">
+                                        <div class="comment-author"><img class="avatar img-fluid rounded-circle" src="img/client-3.jpg" alt="comment"/></div>
+                                        <div class="comment-body">
+                                            <div class="comment-meta">
+                                                <div class="comment-meta-author"><a href="#">محمد خادملو</a></div>
+                                                <div class="comment-meta-date"><a href="#">5 مرداد ، 1399 در 5:45 ق.ظ</a></div>
+                                            </div>
+                                            <div class="comment-content">
+                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است</p>
+                                            </div>
+                                            <div class="comment-reply"><a href="#">پاسخ</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Comment-->
+                            <div class="comment">
+                                <div class="comment-author"><img class="avatar img-fluid rounded-circle" src="img/client-4.jpg" alt="comment"/></div>
+                                <div class="comment-body">
+                                    <div class="comment-meta">
+                                        <div class="comment-meta-author"><a href="#">محمد خادملو</a></div>
+                                        <div class="comment-meta-date"><a href="#">5 مرداد ، 1399 در 5:45 ق.ظ</a></div>
+                                    </div>
+                                    <div class="comment-content">
+                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز</p>
+                                    </div>
+                                    <div class="comment-reply"><a href="#">پاسخ</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment-respond">
+                            <h5 class="comment-reply-title">نظر دهید</h5>
+                            <p class="comment-notes">آدرس ایمیل شما منتشر نخواهد شد. قسمت های مورد نیاز علامت گذاری شده اند</p>
+                            <form class="comment-form row">
+                                <div class="form-group col-md-4">
+                                    <input class="form-control" type="text" placeholder="نام">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input class="form-control" type="text" placeholder="ایمیل">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <input class="form-control" type="url" placeholder="وبسایت">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <textarea class="form-control" rows="8" placeholder="نظر"></textarea>
+                                </div>
+                                <div class="form-submit col-md-12">
+                                    <button class="btn solid-btn" type="submit">ارسال نظر</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Comments area end-->
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="sidebar-right pl-4">
+
+                        <!-- Search widget-->
+                        <aside class="widget widget-search">
+                            <form>
+                                <input class="form-control" type="search" placeholder="کلمات جستجو را تایپ کنید">
+                                <button class="search-button" type="submit"><span class="ti-search"></span></button>
+                            </form>
+                        </aside>
+
+
+                        <!-- Categories widget-->
+                        <aside class="widget widget-categories">
+                            <div class="widget-title">
+                                <h6>دسته بندی ها</h6>
+                            </div>
+                            <ul>
+                               <li><a href="#">سفر <span class="float-right">112</span></a></li>
+                                <li><a href="#">توسعه <span class="float-right">86</span></a></li>
+                                <li><a href="#">ورزش <span class="float-right">10</span></a></li>
+                                <li><a href="#">عکاسی <span class="float-right">144</span></a></li>
+                                <li><a href="#">سمفونی <span class="float-right">18</span></a></li>
+                            </ul>
+                        </aside>
+
+                        <!-- Recent entries widget-->
+                        <aside class="widget widget-recent-entries-custom">
+                            <div class="widget-title">
+                                <h6>پستهای اخیر</h6>
+                            </div>
+                            <ul>
+                                <li class="clearfix">
+                                    <div class="wi"><a href="#"><img src="img/blog/1.jpg" alt="recent post" class="img-fluid rounded"/></a></div>
+                                    <div class="wb"><a href="#">نقشه جایی که عکسهای شما گرفته شده است و نقاط محلی را کشف کنید.</a><span class="post-date">6 مرداد ، 1399</span></div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="wi"><a href="#"><img src="img/blog/2.jpg" alt="recent post" class="img-fluid rounded"/></a></div>
+                                    <div class="wb"><a href="#">نقشه جایی که عکسهای شما گرفته شده است و نقاط محلی را کشف کنید.</a><span class="post-date">6 مرداد ، 1399</span></div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="wi"><a href="#"><img src="img/blog/3.jpg" alt="recent post" class="img-fluid rounded"/></a></div>
+                                    <div class="wb"><a href="#">نقشه جایی که عکسهای شما گرفته شده است و نقاط محلی را کشف کنید.</a><span class="post-date">6 مرداد ، 1399</span></div>
+                                </li>
+                            </ul>
+                        </aside>
+
+                        <!-- Subscribe widget-->
+                        <aside class="widget widget-categories">
+                            <div class="widget-title">
+                                <h6>خبرنامه</h6>
+                            </div>
+                            <p>آدرس ایمیل خود را در زیر وارد کنید تا در خبرنامه من عضو شوید</p>
+                            <form action="#" method="post"
+                                  class="d-none d-md-block d-lg-block">
+                                <input type="text" class="form-control input" id="email-footer" name="email"
+                                       placeholder="info@yourdomain.com">
+                                <button type="submit" class="btn solid-btn btn-block btn-not-rounded mt-3">اشتراک</button>
+                            </form>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--blog section end-->
+
+</div>
+<!--body content wrap end-->
+{% endblock %}

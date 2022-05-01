@@ -1,0 +1,9 @@
+<ul class="sub-menu">
+    {% for cate_article in cate_article.children.active %}
+        <li><a href="{% url 'digital_library:category_article' cate_article.slug%}">{{ cate_article.title }}</a>
+        {% if cate_article.children.active %}
+            {% include 'category_base/category_loop_article.html' %}
+        {% endif %}
+        </li>
+    {% endfor %}
+</ul>

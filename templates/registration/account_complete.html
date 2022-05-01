@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block base %}
+
+<body>
+
+<!--body content wrap start-->
+<div class="main">
+
+    <!--hero section start-->
+    <section class="hero-section full-screen gray-light-bg">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-center">                 <!-- Image -->
+                    <div class="bg-cover vh-100 ml-n3 gradient-overlay" style="background-image: url(img/hero-bg-1.jpg);">
+                        <div class="position-absolute login-signup-content">
+                            <div class="col-md-8 text-center mx-auto container-fluid">
+                                <div class="card ">
+                                    <div class="card-header " style="background-color: rgba(114,2,187,0.89);">
+                                    </div>
+                                    <div class="card-body py-4">
+                                    <p class="py-2 form-text small" style="font-size: 20px;color: #0b0b0b">اکانت شما با موفقیت فعال شد برای ورود کلیک کنید.</p>
+                                        <a class="btn  solid-btn  mt-4 mb-3" href="{% url 'login' %}">ورود</a>
+                                     </div>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+            </div> <!-- / .row -->
+        </div>
+    </section>
+    <!--hero section end-->
+
+</div>
+<!--body content wrap end-->
+
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,7 @@
+.active_page {
+    background-color: #7202bb;
+    border-color: #7202bb;
+    border-radius: 100%; !important;
+    width: 35px;
+    height: 35px;
+}
