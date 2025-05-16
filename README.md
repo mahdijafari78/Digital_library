@@ -4,6 +4,7 @@ This project is a Digital Library system built using Django framework. It allows
 
 ## 📁 Project Structure
 
+```
 Digital_library/
 ├── Digital_library/ # Django project settings
 │ ├── settings.py
@@ -21,6 +22,7 @@ Digital_library/
 ├── db.sqlite3 # Database file (if using SQLite)
 ├── requirements.txt
 └── README.md
+```
 
 
 ## ⚙️ Installation & Setup
@@ -30,41 +32,43 @@ Digital_library/
 ```bash
 git clone https://github.com/mahdijafari78/Digital_library.git
 cd Digital_library
-
-
+```
+```
 python -m venv venv
 source venv/bin/activate    # Windows: venv\Scripts\activate
-
-
+```
+```
 pip install -r requirements.txt
-
-
+```
+```
 python manage.py migrate
-
-
+```
+```
 python manage.py runserver
-
+```
 
 Access the app at http://127.0.0.1:8000/
 
-🧰 Features
-User registration and authentication
+##🧰 Features
+- User registration and authentication
 
-Browse and search digital books by categories
+- Browse and search digital books by categories
 
-Admin panel to add, edit, delete books
+- Admin panel to add, edit, delete books
 
-Responsive design using Bootstrap
+- Responsive design using Bootstrap
 
-User-friendly interface
+- User-friendly interface
 
-🛠️ Technologies Used
-Python 3.x
+##🛠️ Technologies Used
+- Python 3.x
 
-Django
+- Django
 
-SQLite (default database)
+- SQLite (default database)
 
-HTML/CSS/JavaScript (Bootstrap)
+- HTML/CSS/JavaScript (Bootstrap)
 
-Made with by @mahdijafari78
+---
+
+Made with by [@mahdijafari78](https://github.com/mahdijafari78)
